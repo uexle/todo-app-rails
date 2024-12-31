@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Todo App" %></title>
+    <title><%= content_for(:title) || "2Do" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,8 +24,11 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <div class="flex h-screen p-6 bg-white gap-6">
+      <%= render 'shared/sidebar' %>
+      <main class="w-full">
+        <%= yield %>
+      </main>
+  </div>
   </body>
 </html>

@@ -1,0 +1,26 @@
+<div class="flex justify-between mb-6">
+  <div class="flex items-center gap-6 items-center">
+    <h1 class="text-4xl font-bold"><%= @list.title %></h1>
+    <span class="text-gray-700 text-2xl font-medium rounded px-3 py-1 outline outline-1 outline-gray-200"><%= @list.items.count { |item| !item.done } %></span>
+  </div>
+
+  <div class="flex items-center gap-6 items-center">
+    <%= link_to "Edit", edit_list_path(@list), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= button_to "Delete", @list, method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  </div>
+</div>
+
+<%= form_for [@list, @item] do |f| %>
+  <%= f.text_field :text, required: true, placeholder: "Enter a new task here", class: "w-full px-6 py-2 mb-6 text-gray-400 text-lg font-medium text-left rounded outline outline-1 outline-gray-200" %>
+  <%= f.hidden_field :list_id, :value => @list.id%>
+<% end %>
+<ul>
+  <% @items.each do |item|%>
+    <%= form_for [@list, item], html: { class: "item-form" } do |f| %>
+    <li class="flex items-start p-4 border-b border-gray-200">
+      <%= f.check_box :done, :value => item.done, class: "mr-4 mt-2", onchange: "this.form.submit()" %>
+      <h3 class="text-lg font-normal text-gray-600"><%= item.text %></h3>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
