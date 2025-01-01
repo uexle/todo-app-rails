@@ -1,24 +1,21 @@
-# README
+# Todo App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto é um gerenciador de listas de tarefas a serem feitas. Ele permite gerenciar listas que podem conter múltiplos itens. Tanto as listas quanto os itens podem ser criados, editados e excluídos.
 
-Things you may want to cover:
+## Funcionalidades
 
-* Ruby version
+- Criar, editar e excluir listas de tarefas
+- Criar, editar e excluir itens dentro das listas
 
-* System dependencies
+## Tecnologias
 
-* Configuration
+- Ruby on Rails
+- PostgreSQL
 
-* Database creation
+## Como Rodar o Aplicativo (Ambiente de desenvolvimento)
 
-* Database initialization
+Para rodar o aplicativo é necessário ter um banco de dados PostgreSQL e ajustar os parâmetros para conexão no arquivo ./config/database.yml. Após isso, na pasta raiz do projeto, basta executar:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+rails server
+```
