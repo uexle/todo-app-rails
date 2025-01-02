@@ -1,19 +1,33 @@
 <aside class="w-96 bg-gray-100 p-4 rounded-xl">
         <%= link_to lists_path do %>
-            <h2 class="text-2xl font-bold text-gray-600 mb-4">2Do Lists</h2>
+            <h2 class="text-2xl font-bold text-gray-600 mb-6">2Do Task Manager</h2>
         <% end %>
-        <hr class="border-gray-400 mb-6">
+        <hr class="border-gray-300 mb-4">
         <ul class="mb-6">
-            <% @sidebarLists&.each do |list|%>
-                <%= link_to list do %>
-                    <li class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-medium text-gray-400"><%= list.title %></h3>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
-                    </li>
+            <% @sidebarLists&.each do |list| %>
+                <% if list == @list %>
+                    <%= link_to list do %>
+                        <li class="flex items-center justify-between p-2 rounded bg-gray-200">
+                            <h3 class="text-lg font-medium text-gray-600"><%= list.title %></h3>
+                            <span class="bg-gray-100 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
+                        </li>
+                    <% end %>
+                <% else %>
+                    <%= link_to list do %>
+                        <li class="flex items-center justify-between p-2 rounded">
+                            <h3 class="text-lg font-medium text-gray-600"><%= list.title %></h3>
+                            <span class="bg-gray-200 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
+                        </li>
+                    <% end %>
                 <% end %>
             <% end %>
         </ul>
         <%= link_to new_list_path do %>
-            <button class="w-full p-1 text-lg font-medium text-gray-600 bg-gray-200 rounded">➕ New List</button>
+            <div class="flex justify-center items-center p-1 text-lg font-medium text-gray-600 bg-gray-200 rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                </svg>
+                New List
+            </div>
         <% end %>
 </aside>

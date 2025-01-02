@@ -3,9 +3,6 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # Cause the tailwinds engine to rebuild style sheet
-  config.assets.debug = true
-
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 

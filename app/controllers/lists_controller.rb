@@ -7,7 +7,7 @@ class ListsController < ApplicationController
 
   def show
     @item = Item.new
-    @items = @list.items
+    @items = @list.items.order(:position)
   end
 
   def new
