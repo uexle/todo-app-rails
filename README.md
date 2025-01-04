@@ -1,9 +1,10 @@
 # Todo App
 
-Este projeto é um gerenciador de listas de tarefas a serem feitas. Ele permite gerenciar listas que podem conter múltiplos itens. Tanto as listas quanto os itens podem ser criados, editados e excluídos.
+Este projeto é um gerenciador de listas de tarefas. Ele permite, para cada usuário, criar, editar e excluir listas e itens de tarefas.
 
 ## Funcionalidades
 
+- Autenticação
 - Criar, listar, editar e excluir listas de tarefas
 - Criar, editar, ordenar e excluir itens em diferentes listas
 
@@ -13,16 +14,22 @@ Este projeto é um gerenciador de listas de tarefas a serem feitas. Ele permite 
 - TailwindCSS
 - PostgreSQL
 
-## Como Rodar o Aplicativo (Ambiente de desenvolvimento)
+## Como Rodar o Aplicativo (Ambiente de Desenvolvimento)
 
-Para rodar o aplicativo é necessário ter um banco de dados PostgreSQL e ajustar os parâmetros para conexão no arquivo ./config/database.yml. Após isso, na pasta raiz do projeto, basta executar:
+Para rodar o aplicativo, é necessário ter um banco de dados PostgreSQL, Ruby e Bundler instalados. Ajuste os parâmetros de conexão no arquivo `./config/database.yml`. Em seguida, na pasta raiz do projeto, execute os seguintes comandos:
 
 ```sh
 bundle install
 ```
+
+```sh
+rails db:migrate
+```
+
 ```sh
 rails assets:precompile
 ```
+
 ```sh
 rails server
 ```

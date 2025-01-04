@@ -6,7 +6,7 @@
 
     <div class="flex items-center gap-6 items-center">
       <%= link_to "Cancel", list_path(@list), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <%= button_to "Delete", @list, method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Delete", @list, method: :delete, class: "rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium" %>
     </div>
   <% else %>
     <div class="flex items-center gap-6 items-center">
@@ -15,8 +15,8 @@
     </div>
 
     <div class="flex items-center gap-6 items-center">
-      <%= link_to "Edit", list_path(@list, edit:true), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <%= button_to "Delete", @list, method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= link_to "Edit", list_path(@list, edit:true), class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
+      <%= button_to "Delete", @list, method: :delete, class: "rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium" %>
     </div>
   <% end %>
 </div>

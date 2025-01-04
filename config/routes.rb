@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root "lists#index"
+  root "welcome#index"
+
+  resource :session
+  resources :passwords, param: :token
+  resources :users, only: %i[ new create destroy ]
 
   resources :lists do
     resources :items do
