@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
 
   def index
-    @lists = List.all
+    @lists = Current.user&.lists.order(updated_at: :desc)
   end
 
   def show
@@ -18,7 +18,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = Current.user.lists.new(list_params)
 
     respond_to do |format|
       if @list.save
@@ -56,7 +56,7 @@ class ListsController < ApplicationController
 
   private
     def set_list
-      @list = List.find(params.require(:id))
+      @list = Current.user.lists.find(params.require(:id))
     end
 
     def list_params

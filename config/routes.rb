@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "lists#index"
+  root "welcome#index"
+
+  resource :session
+  resources :passwords, param: :token
 
   resources :lists do
     resources :items do
