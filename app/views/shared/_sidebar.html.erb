@@ -1,72 +1,95 @@
-<aside class="flex flex-col justify-between min-w-96 max-w-96 bg-gray-100 px-4 py-6 rounded-xl">
-    <% if Current.user %>
-        <div class="flex flex-col gap-6">
-            <div class="flex px-4 items-center gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-600" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                </svg>
-                <h2 class="text-2xl font-bold text-gray-600"><%= Current.user.email_address.split("@")[0] %></h2>
-            </div>
+<% if Current.user %>
+    <aside class="flex flex-col justify-between min-w-96 max-w-96 bg-gray-100 px-4 py-6 rounded-xl">
+            <div class="flex flex-col gap-6">
+                <div class="flex px-4 items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-600" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                    <h2 class="text-2xl font-bold text-gray-600"><%= Current.user.email_address.split("@")[0] %></h2>
+                </div>
 
-            <hr class="border-gray-300">
+                <hr class="border-gray-300">
 
-            <ul class="flex flex-col overflow-y-auto">
-                <% @sidebarLists&.each do |list| %>
-                    <% if list == @list %>
-                        <%= link_to list do %>
-                            <li class="flex items-center gap-2 justify-between py-2 px-4 rounded bg-gray-200">
-                                <div class="flex items-center gap-2 truncate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-600 min-w-6" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-                                        <path d="M383-480 228-636q-11-11-11.5-27.5T228-692q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L284-268q-11 11-27.5 11.5T228-268q-11-11-11-28t11-28l155-156Zm264 0L492-636q-11-11-11.5-27.5T492-692q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L548-268q-11 11-27.5 11.5T492-268q-11-11-11-28t11-28l155-156Z"/>
-                                    </svg>
-                                    <h3 class="text-lg font-medium text-gray-600 truncate"><%= list.title %></h3>
-                                </div>
-                                <span class="bg-gray-100 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
-                            </li>
-                        <% end %>
-                    <% else %>
-                        <%= link_to list do %>
-                            <li class="flex items-center gap-2 justify-between py-2 px-4 rounded">
-                                <div class="flex items-center gap-2 truncate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-600 min-w-6" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-                                        <path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/>
-                                    </svg>
-                                    <h3 class="text-lg font-medium text-gray-600 truncate"><%= list.title %></h3>
-                                </div>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
-                            </li>
+                <div>
+                <ul class="flex flex-col overflow-y-auto">
+                    <% @sidebarLists&.each do |list| %>
+                        <% if list == @list %>
+                            <%= link_to list do %>
+                                <li class="flex items-center gap-2 justify-between py-2 px-4 rounded bg-gray-200">
+                                    <div class="flex items-center gap-4 truncate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-600 min-w-6" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                                            <path d="M383-480 228-636q-11-11-11.5-27.5T228-692q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L284-268q-11 11-27.5 11.5T228-268q-11-11-11-28t11-28l155-156Zm264 0L492-636q-11-11-11.5-27.5T492-692q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L548-268q-11 11-27.5 11.5T492-268q-11-11-11-28t11-28l155-156Z"/>
+                                        </svg>
+                                        <h3 class="text-lg font-medium text-gray-600 truncate"><%= list.title %></h3>
+                                    </div>
+                                    <span class="bg-gray-100 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
+                                </li>
+                            <% end %>
+                        <% else %>
+                            <%= link_to list do %>
+                                <li class="flex items-center gap-2 justify-between py-2 px-4 rounded">
+                                    <div class="flex items-center gap-4 truncate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-600 min-w-6" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                                            <path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/>
+                                        </svg>
+                                        <h3 class="text-lg font-medium text-gray-600 truncate"><%= list.title %></h3>
+                                    </div>
+                                    <span class="bg-gray-200 text-gray-700 text-sm font-medium rounded px-3 py-1 outline outline-1 outline-gray-300"><%= list.items.count { |item| !item.done } %></span>
+                                </li>
+                            <% end %>
                         <% end %>
                     <% end %>
+                </ul>
+
+                <%= link_to new_list_path do %>
+                    <div class="flex py-2 px-4 items-center gap-4 text-lg font-medium text-gray-600 hover:bg-gray-200 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                            <path d="M440-360v80q0 17 11.5 28.5T480-240q17 0 28.5-11.5T520-280v-80h80q17 0 28.5-11.5T640-400q0-17-11.5-28.5T600-440h-80v-80q0-17-11.5-28.5T480-560q-17 0-28.5 11.5T440-520v80h-80q-17 0-28.5 11.5T320-400q0 17 11.5 28.5T360-360h80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h287q16 0 30.5 6t25.5 17l194 194q11 11 17 25.5t6 30.5v447q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-440H560q-17 0-28.5-11.5T520-640ZM240-800v200-200 640-640Z"/>
+                        </svg>
+                        New List
+                    </div>
                 <% end %>
-            </ul>
-
-            <%= link_to new_list_path do %>
-                <div class="flex py-1 px-4 items-center gap-4 text-lg font-medium text-gray-600 bg-gray-200 rounded">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-                        <path d="M440-360v80q0 17 11.5 28.5T480-240q17 0 28.5-11.5T520-280v-80h80q17 0 28.5-11.5T640-400q0-17-11.5-28.5T600-440h-80v-80q0-17-11.5-28.5T480-560q-17 0-28.5 11.5T440-520v80h-80q-17 0-28.5 11.5T320-400q0 17 11.5 28.5T360-360h80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h287q16 0 30.5 6t25.5 17l194 194q11 11 17 25.5t6 30.5v447q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-440H560q-17 0-28.5-11.5T520-640ZM240-800v200-200 640-640Z"/>
-                    </svg>
-                    New List
                 </div>
-            <% end %>
-        </div>
+            </div>
 
+            <div class="flex flex-col gap-6">
+                <%= button_to session_path, remote: true, method: :delete, class: "w-full flex py-2 px-4 items-center gap-4 text-lg font-medium text-gray-600 hover:bg-gray-200 rounded" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h240q17 0 28.5 11.5T480-160q0 17-11.5 28.5T440-120H200Zm487-320H400q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L669-309q-12 12-28.5 11.5T612-310q-11-12-10.5-28.5T613-366l74-74Z"/>
+                    </svg>
+                    Sign out
+                <% end %>
+            </div>
+    </aside>
+<% else %>
+    <aside class="flex flex-col gap-4 min-w-96 max-w-96 bg-gray-100 px-4 py-6 rounded-xl">
         <div class="flex flex-col gap-6">
-            <%= button_to session_path, remote: true, method: :delete, class: "w-full flex py-1 px-4 items-center gap-4 text-lg font-medium text-gray-600 bg-gray-200 rounded" do %>
+            <%= link_to root_path, class: "w-full flex py-2 px-4 items-center gap-4 text-lg font-medium text-gray-600 hover:bg-gray-200 rounded" do %>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-                    <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h240q17 0 28.5 11.5T480-160q0 17-11.5 28.5T440-120H200Zm487-320H400q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L669-309q-12 12-28.5 11.5T612-310q-11-12-10.5-28.5T613-366l74-74Z"/>
+                    <path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/>
                 </svg>
-                Sign out
+                Home
             <% end %>
         </div>
-     <% else %>
-        <div class="flex flex-col gap-6">
-            <%= link_to lists_path, class: "w-full flex py-1 px-4 items-center gap-4 text-lg font-medium text-gray-600 bg-gray-200 rounded" do %>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-                    <path d="M520-120q-17 0-28.5-11.5T480-160q0-17 11.5-28.5T520-200h240v-560H520q-17 0-28.5-11.5T480-800q0-17 11.5-28.5T520-840h240q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H520Zm-73-320H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L429-309q-12 12-28.5 11.5T372-310q-11-12-10.5-28.5T373-366l74-74Z"/>
-                </svg>
-                Sign in
-            <% end %>
+        <hr class="border-gray-300">
+        <div class="flex flex-col">
+            <div class="flex flex-col gap-6">
+                <%= link_to new_session_path, class: "w-full flex py-2 px-4 items-center gap-4 text-lg font-medium text-gray-600 hover:bg-gray-200 rounded" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                        <path d="M520-120q-17 0-28.5-11.5T480-160q0-17 11.5-28.5T520-200h240v-560H520q-17 0-28.5-11.5T480-800q0-17 11.5-28.5T520-840h240q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H520Zm-73-320H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L429-309q-12 12-28.5 11.5T372-310q-11-12-10.5-28.5T373-366l74-74Z"/>
+                    </svg>
+                    Sign in
+                <% end %>
+            </div>
+            <div class="flex flex-col gap-6">
+                <%= link_to new_user_path, class: "w-full flex py-2 px-4 items-center gap-4 text-lg font-medium text-gray-600 hover:bg-gray-200 rounded" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                        <path d="M520-120q-17 0-28.5-11.5T480-160q0-17 11.5-28.5T520-200h240v-560H520q-17 0-28.5-11.5T480-800q0-17 11.5-28.5T520-840h240q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H520Zm-73-320H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L429-309q-12 12-28.5 11.5T372-310q-11-12-10.5-28.5T373-366l74-74Z"/>
+                    </svg>
+                    Sign Up
+                <% end %>
+            </div>
         </div>
-     <% end %>
-</aside>
+    </aside>
+<% end %>
